@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Repaso_01/Clases/Clases.iml" filepath="$PROJECT_DIR$/Repaso_01/Clases/Clases.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Ficheros_02/Ejercicio3/Ejercicio3.iml" filepath="$PROJECT_DIR$/Ficheros_02/Ejercicio3/Ejercicio3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Ficheros_02/Ejercicio9/Ejercicio9.iml" filepath="$PROJECT_DIR$/Ficheros_02/Ejercicio9/Ejercicio9.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Ficheros_02/Ejercicios1/Ejercicios1.iml" filepath="$PROJECT_DIR$/Ficheros_02/Ejercicios1/Ejercicios1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Repaso_01/Fruteria/Fruteria.iml" filepath="$PROJECT_DIR$/Repaso_01/Fruteria/Fruteria.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Ficheros_02/Leer/Leer.iml" filepath="$PROJECT_DIR$/Ficheros_02/Leer/Leer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Repaso_01/Listas/Listas.iml" filepath="$PROJECT_DIR$/Repaso_01/Listas/Listas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Repaso_01/Proyecto001/Proyecto001.iml" filepath="$PROJECT_DIR$/Repaso_01/Proyecto001/Proyecto001.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Repaso_01/Proyecto002/Proyecto002.iml" filepath="$PROJECT_DIR$/Repaso_01/Proyecto002/Proyecto002.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Repaso_01/Proyecto003/Proyecto003.iml" filepath="$PROJECT_DIR$/Repaso_01/Proyecto003/Proyecto003.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Repaso_01/TiendaElectrodomesticos/TiendaElectrodomesticos.iml" filepath="$PROJECT_DIR$/Repaso_01/TiendaElectrodomesticos/TiendaElectrodomesticos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/WorkSpaces.iml" filepath="$PROJECT_DIR$/.idea/WorkSpaces.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Repaso_01/Zapateria/Zapateria.iml" filepath="$PROJECT_DIR$/Repaso_01/Zapateria/Zapateria.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,3 @@
+Barca::Madrid::6::2
+Malaga::Betis::3::3
+Bilbao::Getafe::9::0
