@@ -1,4 +1,5 @@
 Barca::Madrid::6::2
-Malaga::Betis::3::3
+Malaga::Betis::3::4
 Bilbao::Getafe::9::0
 Sevilla::Moraleja::3::3
+Barca::Getafe::3::0

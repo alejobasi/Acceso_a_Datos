@@ -1,2 +1,1 @@
-Malaga::Betis::3::3
 Sevilla::Moraleja::3::3
