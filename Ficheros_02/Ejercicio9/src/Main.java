@@ -86,8 +86,38 @@ public class Main {
 
     public static void mostarPorParametro(List<Equipos> lista){
         Scanner sc= new Scanner(System.in);
-        System.out.println("Dime un equipo");
+        int cont=0;
+        System.out.println("Dime un equipo y te mostrare los resultados");
         String resp=sc.nextLine();
+
+        for (Equipos eq:lista){
+            if (eq.getEquipo1().equals(resp) || eq.getEquipo2().equals(resp)){
+                System.out.println(eq.getEquipo1()+" "+eq.getResultado1()+"-"+
+                        eq.getResultado2()+" "+eq.getEquipo2());
+                cont++;
+            }
+        }
+        if (cont==0){
+            System.out.println("No hay resultados de este equipo");
+        }
+    }
+
+    public static void ganaVisitante(List<Equipos> lista){
+
+        int cont=0;
+        System.out.println("Paridos ganados por el visitante: ");
+
+
+        for (Equipos eq:lista){
+            if (eq.getResultado1()< eq.getResultado2()){
+                System.out.println(eq.getEquipo1()+" "+eq.getResultado1()+"-"+
+                        eq.getResultado2()+" "+eq.getEquipo2());
+                cont++;
+            }
+        }
+        if (cont==0){
+            System.out.println("No hay resultados que gane el visitante");
+        }
     }
 
     public static void main(String[] args) throws IOException {
@@ -97,5 +127,7 @@ public class Main {
         List<Equipos> listaEquipos2 = new ArrayList<>();
    listaEquipos2= listaEmpates(listaEquipos);
    guardarEmpatesFichero(listaEquipos2);
+   mostarPorParametro(listaEquipos);
+   ganaVisitante(listaEquipos);
     }
 }
