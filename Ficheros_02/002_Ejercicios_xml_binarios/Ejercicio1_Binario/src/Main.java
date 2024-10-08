@@ -186,8 +186,8 @@ public class Main {
     }
     public static void main(String[] args) {
 Scanner sc= new Scanner(System.in);
-List<Deportistas> deportistas= new ArrayList<>();
-deportistas=GestionFicheros.recuperarDeportistas();
+        List<Deportistas> deportistas = GestionFicheros.recuperarDeportistas();
+
 int res=0;
         do {
             System.out.println("Acciones Deportistas");

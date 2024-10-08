@@ -3,6 +3,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -60,24 +61,28 @@ public class GestionFicheros {
         }
     }
 
-    public static List<Deportistas> recuperarDeportistas(){
+    public static List<Deportistas> recuperarDeportistas() {
+        List<Deportistas> deportistas = new ArrayList<>();  // Inicializamos una lista vacía
 
-        List<Deportistas> deportistas;
-        Path pathDirectorio=Paths.get(RUTA_DIRECTORIO);
-        Path path= Paths.get(RUTA_FICHERO);
+        Path path = Paths.get(RUTA_FICHERO);
 
-        try {
-            InputStream ArchivoEntrada=Files.newInputStream(path);
+        if (Files.exists(path)) {
+            try {
+                InputStream archivoEntrada = Files.newInputStream(path);
+                ObjectInputStream flujoEntrada = new ObjectInputStream(archivoEntrada);
 
-            ObjectInputStream flujoEntrada = new ObjectInputStream(ArchivoEntrada);
-          return   deportistas=(List<Deportistas>) flujoEntrada.readObject();
+                deportistas = (List<Deportistas>) flujoEntrada.readObject();
 
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            } catch (IOException e) {
+                System.out.println("Error al leer el archivo: " + e.getMessage());
+            } catch (ClassNotFoundException e) {
+                System.out.println("Clase no encontrada: " + e.getMessage());
+            }
+        } else {
+            System.out.println("El archivo no existe, se devolverá una lista vacía.");
         }
 
+        return deportistas;
     }
+
 }
