@@ -44,4 +44,6 @@ public class Deportistas implements Serializable {
     public void setDeporte(Deporte deporte) {
         this.deporte = deporte;
     }
+
+
 }
