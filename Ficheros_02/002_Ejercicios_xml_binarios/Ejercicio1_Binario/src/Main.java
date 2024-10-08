@@ -1,11 +1,12 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
     public static void altaDeportistas(List<Deportistas> deportistas){
-
+        GestionFicheros.guardarDeportistas(deportistas);
         Scanner sc =new Scanner(System.in);
 
         System.out.println("--------- Formulario Alta ---------\n");
@@ -173,20 +174,20 @@ public class Main {
     }
 
     public static void listarAlfabetico(List<Deportistas> deportistas){
-        deportistas.sort((d1,d2)->d1.getNombre().compareTo(d2.getNombre()));
+        deportistas.sort(Comparator.comparing(Deportistas::getNombre));
 
         verDeportistas(deportistas);
     }
 
     public static void listarFechaNacimiento(List<Deportistas> deportistas){
-        deportistas.sort((d1,d2)->d1.getFecha_nacimiento().compareTo(d2.getFecha_nacimiento()));
+        deportistas.sort(Comparator.comparing(Deportistas::getFecha_nacimiento));
 
         verDeportistas(deportistas);
     }
     public static void main(String[] args) {
 Scanner sc= new Scanner(System.in);
 List<Deportistas> deportistas= new ArrayList<>();
-
+deportistas=GestionFicheros.recuperarDeportistas();
 int res=0;
         do {
             System.out.println("Acciones Deportistas");
@@ -211,6 +212,8 @@ int res=0;
                    listarFechaNacimiento(deportistas);
                    break;
                case 6:
+                   GestionFicheros.guardarDeportistas(deportistas);
+
                    System.out.println("Adiooooooos");
            }
 
