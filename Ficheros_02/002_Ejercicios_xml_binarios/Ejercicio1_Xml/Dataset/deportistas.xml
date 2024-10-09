@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Deportistas>
+    <Deportista>
+        <Dni>asdasdas</Dni>
+        <Nombre>Alejooo</Nombre>
+        <FechaNacimiento>06-08-2004</FechaNacimiento>
+        <Deporte>Remo</Deporte>
+    </Deportista>
+    <Deportista>
+        <Dni>aaaaa77</Dni>
+        <Nombre>Alejo</Nombre>
+        <FechaNacimiento>09-02-2000</FechaNacimiento>
+        <Deporte>Vela</Deporte>
+    </Deportista>
+</Deportistas>
