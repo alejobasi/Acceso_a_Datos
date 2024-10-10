@@ -1,0 +1,6 @@
+1;Dell i5 DeskTop 8GB 256SSD;455.5;123;PCs
+2;Samsung Galaxy A20e;125.0;344;Móviles
+4;Toshiba SSD;56.0;234;HD
+5;Samsung A70;402.0;133;Móviles
+6;Lemur 25 SSD;200.0;120;HD
+7;Lemur 44 SSD;1200.0;140;HD
