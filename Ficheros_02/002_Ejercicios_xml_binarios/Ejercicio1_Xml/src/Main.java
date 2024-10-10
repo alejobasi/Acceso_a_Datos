@@ -1,6 +1,7 @@
 import org.w3c.dom.Document;
 
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
@@ -25,13 +26,6 @@ import java.util.Scanner;
 public class Main {
 
     public static String RUTA_FICHERO="Dataset"+ File.separator+"deportistas.xml";
-
-
-
-
-
-
-
 
 
     public static void altaDeportistas(List<Deportistas> deportistas){
@@ -160,12 +154,57 @@ public class Main {
                 System.out.println("dime el Dni del Deportista que quieres dar de Baja:");
                 String baja=sc.next();
                 boolean borrado=false;
-                for (Deportistas d:deportistas){
-                    if (d.getDNI().equals(baja)){
-                        deportistas.remove(d);
-                        borrado=true;
+
+
+
+                try {
+                    DocumentBuilderFactory dbFactory= DocumentBuilderFactory.newInstance();
+                    DocumentBuilder dBulider  = dbFactory.newDocumentBuilder();
+                    Document doc=dBulider.parse(new File(RUTA_FICHERO));
+                    doc.getDocumentElement().normalize();
+
+                    NodeList listaDeportistas=doc.getElementsByTagName("Deportista");
+
+                    for (int i=0; i<listaDeportistas.getLength();i++){
+                        Node nodoDeportita=listaDeportistas .item(i);
+                        nodoDeportita.getAttributes();
+
+                        if (nodoDeportita.getNodeType()==Node.ELEMENT_NODE){
+
+                            Element deportista= (Element) nodoDeportita;
+
+                            String dni= deportista.getElementsByTagName("Dni").item(0).getTextContent();
+
+                            if (baja.equals(dni)){
+
+                                nodoDeportita.getParentNode().removeChild(nodoDeportita);
+                                borrado=true;
+                            }
+                        }
+
                     }
+
+                    if (borrado) {
+                        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+                        Transformer transformer = transformerFactory.newTransformer();
+                        DOMSource source = new DOMSource(doc);
+                        StreamResult result = new StreamResult(new File(RUTA_FICHERO));
+                        transformer.transform(source, result);
+                    }
+
+                } catch (ParserConfigurationException e) {
+                    throw new RuntimeException(e);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                } catch (SAXException e) {
+                    throw new RuntimeException(e);
+                } catch (TransformerConfigurationException e) {
+                    throw new RuntimeException(e);
+                } catch (TransformerException e) {
+                    throw new RuntimeException(e);
                 }
+
+
                 if (borrado){
                     System.out.println("Usuario Borrado");
                 }else {
