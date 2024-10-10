@@ -62,7 +62,7 @@ public class GestionFicheros {
     }
 
     public static List<Deportistas> recuperarDeportistas() {
-        List<Deportistas> deportistas = new ArrayList<>();  // Inicializamos una lista vacía
+        List<Deportistas> deportistas = new ArrayList<>();
 
         Path path = Paths.get(RUTA_FICHERO);
 
