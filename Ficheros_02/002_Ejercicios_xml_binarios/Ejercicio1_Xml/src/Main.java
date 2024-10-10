@@ -235,60 +235,102 @@ public class Main {
         System.out.println("");
 
         System.out.println("Dime el Dni del que quieres Modificar");
-        String dni=sc.next();
+        String dnibaja=sc.next();
 
-        for (Deportistas d:deportistas){
-            if (d.getDNI().equals(dni)){
+        try {
+            DocumentBuilderFactory dbFactory= DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBulider  = dbFactory.newDocumentBuilder();
+            Document doc=dBulider.parse(new File(RUTA_FICHERO));
+            doc.getDocumentElement().normalize();
 
-                System.out.println("Dime el Nombre");
-                String nombre=sc.next();
+            NodeList listaDeportistas=doc.getElementsByTagName("Deportista");
 
-                System.out.println("Dime la fecha de Nacimiento (01-01-2000)");
-                String fechaNac=sc.next();
+            for (int i=0; i<listaDeportistas.getLength();i++){
+                Node nodoDeportita=listaDeportistas .item(i);
+                nodoDeportita.getAttributes();
 
-                System.out.println("Dime el deporte que practica indicando la letra\n- N: natacion\n- R: Remo\n- V: Vela\n- W: Waterpolo");
-                String respuestaDeporte=sc.next();
-                Deporte depor = null;
+                if (nodoDeportita.getNodeType()==Node.ELEMENT_NODE){
 
-                switch (respuestaDeporte){
-                    case "N":
-                        depor=Deporte.Natacion;
-                        break;
-                    case "n":
-                        depor=Deporte.Natacion;
-                        break;
-                    case "R":
-                        depor=Deporte.Remo;
-                        break;
-                    case "r":
-                        depor=Deporte.Remo;
-                        break;
-                    case "V":
-                        depor=Deporte.Vela;
-                        break;
-                    case "v":
-                        depor=Deporte.Vela;
-                        break;
-                    case "W":
-                        depor=Deporte.Waterpolo;
-                        break;
-                    case "w":
-                        depor=Deporte.Waterpolo;
-                        break;
-                    default:
-                        System.out.println("Respuesta incorrecta no se cambia");
-                        depor=d.getDeporte();
-                        break;
+                    Element deportista= (Element) nodoDeportita;
 
+                    String dni= deportista.getElementsByTagName("Dni").item(0).getTextContent();
+
+                    if (dnibaja.equals(dni)){
+                        System.out.println("Dime el Nombre");
+                        String nombre=sc.next();
+
+                        System.out.println("Dime la fecha de Nacimiento (01-01-2000)");
+                        String fechaNac=sc.next();
+
+                        System.out.println("Dime el deporte que practica indicando la letra\n- N: natacion\n- R: Remo\n- V: Vela\n- W: Waterpolo");
+                        String respuestaDeporte=sc.next();
+                        Deporte depor = null;
+
+                        switch (respuestaDeporte){
+                            case "N":
+                                depor=Deporte.Natacion;
+                                break;
+                            case "n":
+                                depor=Deporte.Natacion;
+                                break;
+                            case "R":
+                                depor=Deporte.Remo;
+                                break;
+                            case "r":
+                                depor=Deporte.Remo;
+                                break;
+                            case "V":
+                                depor=Deporte.Vela;
+                                break;
+                            case "v":
+                                depor=Deporte.Vela;
+                                break;
+                            case "W":
+                                depor=Deporte.Waterpolo;
+                                break;
+                            case "w":
+                                depor=Deporte.Waterpolo;
+                                break;
+                            default:
+                                System.out.println("Respuesta incorrecta no se cambia");
+                                depor= Deporte.valueOf(deportista.getElementsByTagName("Deporte").item(0).getTextContent());
+                                break;
+
+                        }
+
+                        deportista.getElementsByTagName("Nombre").item(0).setTextContent(nombre);
+                        deportista.getElementsByTagName("FechaNacimiento").item(0).setTextContent(fechaNac);
+                        deportista.getElementsByTagName("Deporte").item(0).setTextContent(String.valueOf(depor));
+
+
+
+                    }
                 }
-                d.setNombre(nombre);
-                d.setFecha_nacimiento(fechaNac);
-                d.setDeporte(depor);
 
-            }else {
-                System.out.println("No se encontro ese Dni");
             }
+
+
+                TransformerFactory transformerFactory = TransformerFactory.newInstance();
+                Transformer transformer = transformerFactory.newTransformer();
+                DOMSource source = new DOMSource(doc);
+                StreamResult result = new StreamResult(new File(RUTA_FICHERO));
+                transformer.transform(source, result);
+
+
+        } catch (ParserConfigurationException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (SAXException e) {
+            throw new RuntimeException(e);
+        } catch (TransformerConfigurationException e) {
+            throw new RuntimeException(e);
+        } catch (TransformerException e) {
+            throw new RuntimeException(e);
         }
+
+
+
 
     }
 
